@@ -1,0 +1,52 @@
+#include<iostream>
+using namespace std;
+int power(int, int,int);
+int main()
+{
+	int  B, p, m, R = 100;
+	
+	cout << "enter two numbers for power"<<endl;
+	cin >> B >> p >> m;
+	//cout << "enter % "<<endl;
+//	cin >> m;
+	R = power(B, p, m);
+    R = R % m;
+	cout << "the result is : " << R << endl;
+	system("pause");
+}
+int power(int B, int p,int m)
+{
+	int  z =0;
+
+	
+	if (B == 0 && p != 0)
+
+	{
+		z = 0;
+		return z;
+	}
+
+	if (p == 0)
+	{
+		z = 1;
+		return z;
+	}
+		
+
+	if (p % 2 == 0)
+	{
+		
+		z = power(B*B, p / 2, m);
+		z = z % m;
+		return z;
+	}
+
+	else if (p % 2 != 2)
+	{
+		
+		z = B * power(B*B, p / 2,m);
+		z = z % m;
+		return z;
+	}
+	
+}

@@ -1,0 +1,91 @@
+string biginteger::subtrication(string s1, string s2)
+{
+	int l1 = s1.length();
+	int l2 = s2.length();
+	string s3;
+	int borrow = 0;
+	int sub;
+	int mark = 0;
+	if (l1 == l2) {
+		for (int i = 0; i < l1; i++) {
+			if (s2[i] > s1[i]) {
+				mark = 1;
+				break;
+			}
+			else if(s1[i]>s2[i]) {
+				mark = 2;
+				break;
+			}
+		}
+	}
+	
+	if(l2>l1 || mark == 1) {
+		int j = l2 - 1;
+		for (int i = l1 - 1; i >= 0; i--) {
+			sub = ((s2[j] - '0') - (s1[i] - '0') - borrow);
+
+			if (sub < 0) {
+				sub += 10;
+				borrow = 1;
+			}
+			else {
+				borrow = 0;
+			}
+			j--;
+			if (i > 0)
+				s3.push_back(sub + '0');
+			else if (sub != 0)
+				s3.push_back(sub + '0');
+		}
+		for (int i = l2-l1-1; i >= 0; i--) {
+			int sub = ((s2[i] - '0') - borrow);
+			if (sub < 0)
+			{
+				sub = sub + 10;
+				borrow = 1;
+			}
+			else
+				borrow = 0;
+
+			if (i > 0)
+				s3.push_back(sub + '0');
+			else if (sub != 0)
+				s3.push_back(sub + '0');
+		}
+	}
+	else {
+		int j = l1 - 1;
+		for (int i = l2 - 1; i >= 0; i--) {
+			sub = ((s1[j] - '0') - (s2[i] - '0') - borrow);
+
+			if (sub < 0) {
+				sub += 10;
+				borrow = 1;
+			}
+			else
+				borrow = 0;
+			j--;
+			if (i > 0)
+				s3.push_back(sub + '0');
+			else if (sub != 0)
+				s3.push_back(sub + '0');
+		}
+		for (int i = l1-l2-1; i >= 0; i--) {
+			int sub = ((s1[i] - '0') - borrow);
+			if (sub < 0)
+			{
+				sub = sub + 10;
+				borrow = 1;
+			}
+			else
+				borrow = 0;
+			if(i>0)
+			s3.push_back(sub + '0');
+			else if(sub!=0)
+				s3.push_back(sub + '0');
+		}
+	}
+	
+	reverse(s3.begin(), s3.end());
+	return s3;
+	}

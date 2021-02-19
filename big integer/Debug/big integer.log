@@ -1,0 +1,5 @@
+﻿  biginteger.cpp
+  Source.cpp
+  Generating Code...
+c:\users\aladdin\desktop\big integer\big integer\biginteger.cpp(110): warning C4715: 'biginteger::isgreater': not all control paths return a value
+  big integer.vcxproj -> C:\Users\Aladdin\Desktop\big integer\Debug\big integer.exe
